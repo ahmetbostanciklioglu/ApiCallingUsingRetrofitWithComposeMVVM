@@ -2,6 +2,7 @@ package com.ahmet.bostanciklioglu.consumeapijetpackcompose.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,7 +31,9 @@ fun HomeScreen() {
     val homeViewModel = viewModel(modelClass = HomeViewModel::class.java)
     val games by homeViewModel.games.collectAsState()
 
-    LazyColumn {
+    LazyColumn(
+        contentPadding = PaddingValues(12.dp)
+    ) {
         items(games) { game: GameItem ->
             GameCard(game = game)
         }
@@ -45,7 +48,7 @@ fun GameCard(game: GameItem) {
         elevation = CardDefaults.cardElevation(5.dp),
         shape = RoundedCornerShape(5.dp),
         modifier = Modifier
-            .padding(top = 5.dp, bottom = 5.dp, start = 10.dp, end = 10.dp)
+            .padding(bottom = 10.dp, top = 4.dp)
             .fillMaxSize()
     ) {
         Column {
